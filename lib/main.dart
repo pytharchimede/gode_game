@@ -27,6 +27,10 @@ class _DiceGameState extends State<DiceGame> {
   int dice1 = 1;
   int dice2 = 1;
   bool isRolling = false;
+  String playerName = "Joueur";
+  double balance = 1000.0;
+  double betAmount = 50.0;
+  double winAmount = 0.0;
 
   void rollDice() async {
     setState(() {
@@ -43,7 +47,18 @@ class _DiceGameState extends State<DiceGame> {
       });
     }
 
+    // Calculer le gain
+    int sum = dice1 + dice2;
+    if (sum == 7 || sum == 11) {
+      winAmount = betAmount * 2;
+    } else if (sum == 2 || sum == 3 || sum == 12) {
+      winAmount = 0; // Perte
+    } else {
+      winAmount = betAmount; // Mise simple, pas de perte
+    }
+
     setState(() {
+      balance = balance + winAmount - betAmount; // Mettre à jour le solde
       isRolling = false;
     });
   }
@@ -64,7 +79,57 @@ class _DiceGameState extends State<DiceGame> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Tableau de bord du joueur
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Card(
+                    color: Colors.black54,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Joueur: $playerName',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Mise: XOF ${betAmount.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Solde: XOF ${balance.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Gain: XOF ${winAmount.toStringAsFixed(2)}',
+                            style: TextStyle(
+                              color: winAmount > 0 ? Colors.green : Colors.red,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 // Dés avec animation
+                const SizedBox(height: 30), // Espace entre la box et les dés
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
