@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  flutter_animate: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +27,4 @@ flutter:
     - assets/dice4.png
     - assets/dice5.png
     - assets/dice6.png
+    - assets/background.jpg

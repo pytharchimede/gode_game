@@ -1,113 +1,116 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
-void main() => runApp(GodeGameApp());
+void main() {
+  runApp(const GodeGame());
+}
 
-class GodeGameApp extends StatelessWidget {
-  const GodeGameApp({super.key});
+class GodeGame extends StatelessWidget {
+  const GodeGame({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: GodeGame(),
+      home: DiceGame(),
     );
   }
 }
 
-class GodeGame extends StatefulWidget {
-  const GodeGame({super.key});
-
+class DiceGame extends StatefulWidget {
   @override
-  _GodeGameState createState() => _GodeGameState();
+  _DiceGameState createState() => _DiceGameState();
 }
 
-class _GodeGameState extends State<GodeGame> {
-  final Random random = Random();
-  int player1Dice1 = 1;
-  int player1Dice2 = 1;
-  int player2Dice1 = 1;
-  int player2Dice2 = 1;
+class _DiceGameState extends State<DiceGame> {
+  int dice1 = 1;
+  int dice2 = 1;
+  bool isRolling = false;
 
-  int player1Score = 0;
-  int player2Score = 0;
-  int cagnotte = 100;
-
-  String winner = "";
-
-  void rollDice() {
+  void rollDice() async {
     setState(() {
-      // Lancer les dés pour les deux joueurs
-      player1Dice1 = random.nextInt(6) + 1;
-      player1Dice2 = random.nextInt(6) + 1;
-      player2Dice1 = random.nextInt(6) + 1;
-      player2Dice2 = random.nextInt(6) + 1;
+      isRolling = true;
+    });
 
-      // Calcul des scores
-      player1Score = player1Dice1 + player1Dice2;
-      player2Score = player2Dice1 + player2Dice2;
+    // Simuler l'animation du dé
+    for (int i = 0; i < 10; i++) {
+      await Future.delayed(const Duration(milliseconds: 100), () {
+        setState(() {
+          dice1 = Random().nextInt(6) + 1;
+          dice2 = Random().nextInt(6) + 1;
+        });
+      });
+    }
 
-      // Déterminer le gagnant
-      if (player1Score > player2Score) {
-        winner = "Joueur 1 gagne!";
-        cagnotte += 10;
-      } else if (player2Score > player1Score) {
-        winner = "Joueur 2 gagne!";
-        cagnotte += 10;
-      } else {
-        winner = "Égalité ! Relancez les dés.";
-      }
+    setState(() {
+      isRolling = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Jeu de Godé"),
-        backgroundColor: Colors.blueAccent,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Text("Cagnotte : $cagnotte", style: const TextStyle(fontSize: 24)),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  const Text("Joueur 1", style: TextStyle(fontSize: 18)),
-                  Image.asset('assets/dice$player1Dice1.png',
-                      width: 80, height: 80),
-                  Image.asset('assets/dice$player1Dice2.png',
-                      width: 80, height: 80),
-                  Text("Score : $player1Score",
-                      style: const TextStyle(fontSize: 16)),
-                ],
-              ),
-              Column(
-                children: [
-                  const Text("Joueur 2", style: TextStyle(fontSize: 18)),
-                  Image.asset('assets/dice$player2Dice1.png',
-                      width: 80, height: 80),
-                  Image.asset('assets/dice$player2Dice2.png',
-                      width: 80, height: 80),
-                  Text("Score : $player2Score",
-                      style: const TextStyle(fontSize: 16)),
-                ],
-              ),
-            ],
+          // Fond immersif
+          Positioned.fill(
+            child: Image.asset(
+              'assets/background.jpg',
+              fit: BoxFit.cover,
+            ),
           ),
-          const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: rollDice,
-            child: const Text("Lancer les dés"),
-          ),
-          const SizedBox(height: 20),
-          Text(
-            winner,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Dés avec animation
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Animate(
+                      effects: [
+                        ShimmerEffect(),
+                        const RotateEffect(
+                            duration: Duration(milliseconds: 500))
+                      ],
+                      child: Image.asset(
+                        'assets/dice$dice1.png',
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Animate(
+                      effects: [
+                        const FlipEffect(duration: Duration(milliseconds: 500)),
+                      ],
+                      child: Image.asset(
+                        'assets/dice$dice2.png',
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
+                // Bouton de lancer
+                ElevatedButton(
+                  onPressed: isRolling ? null : rollDice,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
+                    backgroundColor: Colors.amber,
+                    textStyle: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: const Text("Lancer les dés"),
+                ),
+              ],
+            ),
           ),
         ],
       ),
