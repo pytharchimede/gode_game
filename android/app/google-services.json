@@ -1,30 +1,76 @@
 {
-    "project_info": {
-      "project_number": "644324175531",
-      "project_id": "coralys-27476",
-      "storage_bucket": "coralys-27476.firebasestorage.app"
-    },
-    "client": [
-      {
-        "client_info": {
-          "mobilesdk_app_id": "1:644324175531:android:d18cac06574cabcbcd51ee",
-          "android_client_info": {
-            "package_name": "com.ulrich.gode_game"
-          }
-        },
-        "oauth_client": [],
-        "api_key": [
-          {
-            "current_key": "AIzaSyAb9tMy1lHob3B58EnZ7IoscoYOOku56kI"
-          }
-        ],
-        "services": {
-          "appinvite_service": {
-            "other_platform_oauth_client": []
-          }
+  "project_info": {
+    "project_number": "644324175531",
+    "project_id": "coralys-27476",
+    "storage_bucket": "coralys-27476.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644324175531:android:48ea38b868948d7dcd51ee",
+        "android_client_info": {
+          "package_name": "com.example.prestataires_domicile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644324175531-tpbf4onh2jda516rt53vt4i5l0549mg3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb9tMy1lHob3B58EnZ7IoscoYOOku56kI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644324175531-tpbf4onh2jda516rt53vt4i5l0549mg3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
-    ],
-    "configuration_version": "1"
-  } 
-
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644324175531:android:d18cac06574cabcbcd51ee",
+        "android_client_info": {
+          "package_name": "com.ulrich.gode_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644324175531-303k8s3b6kf0id1k0cv10bl2nl9amcat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ulrich.gode_game",
+            "certificate_hash": "6be40b97669c493cb1d94818aa40a5aedf2ff069"
+          }
+        },
+        {
+          "client_id": "644324175531-tpbf4onh2jda516rt53vt4i5l0549mg3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb9tMy1lHob3B58EnZ7IoscoYOOku56kI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644324175531-tpbf4onh2jda516rt53vt4i5l0549mg3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

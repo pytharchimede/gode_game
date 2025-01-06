@@ -1,0 +1,90 @@
+PS C:\applis_mobiles\gode_game\android> .\gradlew.bat signingReport
+>> 
+Starting a Gradle Daemon, 2 busy and 2 incompatible and 1 stopped Daemons could not be reused, use --status for details
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+Variant: release
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+Variant: profile
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+
+> Task :cloud_firestore:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+
+> Task :firebase_auth:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+
+> Task :firebase_core:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+
+> Task :google_sign_in_android:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\PC\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BC:0B:99:A7:5F:42:45:15:51:CA:8B:F5:9A:46:BC:6D
+SHA1: 6B:E4:0B:97:66:9C:49:3C:B1:D9:48:18:AA:40:A5:AE:DF:2F:F0:69
+SHA-256: A6:B0:3B:22:D8:49:C4:AF:BB:21:79:6B:F0:F1:F7:F9:97:B0:BA:74:8E:11:4F:D3:01:AE:D1:F8:81:91:96:D6
+Valid until: lundi 28 septembre 2054
+----------
+
+BUILD SUCCESSFUL in 1m 9s
+9 actionable tasks: 7 executed, 2 up-to-date
+PS C:\applis_mobiles\gode_game\android>    
+   
