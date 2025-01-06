@@ -20,8 +20,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ulrich.gode_game"
-        // Définissez explicitement la version minimale du SDK à 23.
-        minSdk = 23 
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -38,6 +37,11 @@ flutter {
     source = "../.."
 }
 
+dependencies {
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-firestore:24.0.0'
+    implementation 'com.google.firebase:firebase-analytics:21.0.0'
+}
 
-// Appliquer le plugin google-services à la fin du fichier
 apply plugin: 'com.google.gms.google-services'

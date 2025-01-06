@@ -1,7 +1,17 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class DiceWidget extends StatefulWidget {
-  const DiceWidget({Key? key}) : super(key: key);
+  final int playerIndex;
+  final bool isMyTurn;
+  final Function(int, int) onRoll;
+
+  const DiceWidget({
+    Key? key,
+    required this.playerIndex,
+    required this.isMyTurn,
+    required this.onRoll,
+  }) : super(key: key);
 
   @override
   _DiceWidgetState createState() => _DiceWidgetState();
@@ -10,22 +20,24 @@ class DiceWidget extends StatefulWidget {
 class _DiceWidgetState extends State<DiceWidget> {
   int dice1 = 1;
   int dice2 = 1;
-
-  void rollDice() {
-    setState(() {
-      dice1 = (1 +
-          (6 * (new DateTime.now().millisecondsSinceEpoch % 1000) / 1000)
-              .toInt());
-      dice2 = (1 +
-          (6 * (new DateTime.now().millisecondsSinceEpoch % 1000) / 1000)
-              .toInt());
-    });
-  }
+  bool rolling = false;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Image de fond
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        // Les dés affichés
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -35,19 +47,30 @@ class _DiceWidgetState extends State<DiceWidget> {
           ],
         ),
         const SizedBox(height: 20),
+        // Bouton Lancer les Dés
         ElevatedButton(
-          onPressed: rollDice,
+          onPressed: widget.isMyTurn && !rolling
+              ? () {
+                  setState(() {
+                    rolling = true;
+                  });
+                  // Animation de lancer
+                  Future.delayed(const Duration(milliseconds: 500), () {
+                    int roll1 = Random().nextInt(6) + 1;
+                    int roll2 = Random().nextInt(6) + 1;
+                    setState(() {
+                      dice1 = roll1;
+                      dice2 = roll2;
+                      rolling = false;
+                    });
+                    widget.onRoll(roll1, roll2);
+                  });
+                }
+              : null,
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+            backgroundColor: widget.isMyTurn ? Colors.blue : Colors.grey,
           ),
-          child: const Text(
-            'Lancer les Dés',
-            style: TextStyle(fontSize: 20),
-          ),
+          child: const Text('Lancer les Dés'),
         ),
       ],
     );
