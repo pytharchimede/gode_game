@@ -1,4 +1,4 @@
-package com.example.gode_game
+package com.ulrich.gode_game
 
 import io.flutter.embedding.android.FlutterActivity
 
