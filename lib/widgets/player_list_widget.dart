@@ -19,8 +19,23 @@ class PlayerListWidget extends StatelessWidget {
 
         return ListView.builder(
           itemCount: players.length,
-          itemBuilder: (context, index) => ListTile(
-            title: Text('Joueur ${index + 1}'),
+          itemBuilder: (context, index) => Card(
+            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            color: Colors.white.withOpacity(0.8),
+            child: ListTile(
+              title: Text(
+                'Joueur ${index + 1}',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              subtitle:
+                  Text('Mise: XOF 1000', style: TextStyle(color: Colors.blue)),
+              trailing: Text(
+                'Gain: XOF 2000',
+                style:
+                    TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         );
       },
